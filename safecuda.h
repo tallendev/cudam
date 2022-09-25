@@ -1,7 +1,6 @@
 // This file contains a composite of the different types of CUDA error check wrappers I have seen over the years. 
 #pragma once
 
-#include <cuda.h>
 #include <cuda_runtime.h>
 #include <nvrtc.h>
 #include <cstdio>
