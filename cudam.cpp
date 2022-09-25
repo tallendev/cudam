@@ -1,6 +1,6 @@
 #include "safecuda.h"
 
-void * operator new(std::size_t n) //throw(std::bad_alloc)
+__host__ void * operator new(std::size_t n) //throw(std::bad_alloc)
 {
     void* p;
     cudaMallocManaged(&p, n);
@@ -9,14 +9,14 @@ void * operator new(std::size_t n) //throw(std::bad_alloc)
 }
 
 
-void operator delete(void* p) //throw()
+__host__ void operator delete(void* p) //throw()
 {
     cudaFree(p);
     CHECK_CUDA_ERROR();
 }
 
 
-void * operator new[](std::size_t n) //throw(std::bad_alloc)
+__host__ void * operator new[](std::size_t n) //throw(std::bad_alloc)
 {
     void* p;
     cudaMallocManaged(&p, n);
@@ -25,7 +25,7 @@ void * operator new[](std::size_t n) //throw(std::bad_alloc)
 }
 
 
-void operator delete[](void* p) //throw()
+__host__ void operator delete[](void* p) //throw()
 {
     cudaFree(p);
     CHECK_CUDA_ERROR();
